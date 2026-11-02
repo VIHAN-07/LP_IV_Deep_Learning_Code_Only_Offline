@@ -1,0 +1,40 @@
+EXAM DATASET MAPPING
+
+Run from each notebook's exercise folder. Files below are relative to that
+folder. CSV/text files sit directly beside the notebooks; no external paths.
+
+01_FNN/
+  1A: mnist_train.csv and mnist_test.csv
+  1B: fashion-mnist_train.csv and fashion-mnist_test.csv
+  1C: cifar-10.csv
+  1E: sign_mnist_train.csv and sign_mnist_test.csv
+
+02_CNN/
+  2A: cifar-10.csv
+  2B: mnist_train.csv and mnist_test.csv
+  2C: sign_mnist_train.csv and sign_mnist_test.csv
+
+03_Autoencoder/
+  3A: creditcard.csv
+  3B / 3E: ecg.csv (approved replacement for MVTec/NSL-KDD)
+  3C: energy consumption.csv
+  3D: NASA TurboFan Engine.csv
+  3F: sign_mnist_train.csv and sign_mnist_test.csv
+
+04_CBOW/
+  4A: IMDB Dataset.csv (review, sentiment)
+  4B / 4D: twitter_dataset.csv (Text)
+  4C: document3.txt
+
+05_Transfer_Learning/
+  5A: caltech101/ (101 object classes; excludes BACKGROUND_Google)
+  5B: intel/ (6 class folders)
+  5C: fashion_mnist/ (10 classes; extra train folder excluded)
+  5A / 5B / 5C: vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5
+  Image roots use Path("caltech101"), Path("intel") or Path("fashion_mnist").
+
+Shared CSVs are independent copies in every section that needs them.
+EXAM_CODE_ONLY.zip excludes datasets and weights.
+Datasets and weights remain in the exercise folders and are not zipped.
+The historical root data/ folder and external originals are retained but unused.
+No old .npz files, prepared private data, ResNet or MDMLP weights are required.

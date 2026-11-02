@@ -1,0 +1,30 @@
+# Publish notebooks and setup documentation only.
+# Everything else (including datasets, weights, outputs and archives) stays local.
+/*
+!/.gitignore
+!/.gitattributes
+!/README.md
+!/README.txt
+!/requirements.txt
+!/EXAM_DATASET_MAPPING.txt
+!/STATEMENT_COVERAGE.txt
+
+!/01_FNN/
+!/02_CNN/
+!/03_Autoencoder/
+!/04_CBOW/
+!/05_Transfer_Learning/
+
+/01_FNN/*
+/02_CNN/*
+/03_Autoencoder/*
+/04_CBOW/*
+/05_Transfer_Learning/*
+
+!/01_FNN/*.ipynb
+!/02_CNN/*.ipynb
+!/03_Autoencoder/*.ipynb
+!/04_CBOW/*.ipynb
+!/05_Transfer_Learning/*.ipynb
+
+**/.ipynb_checkpoints/
