@@ -1,57 +1,21 @@
-STATEMENT COVERAGE - IMPLEMENTATION MAPPING
+EXAM STATEMENT STEPS
 
-This maps the requested steps to the notebooks. For the current runtime-check
-scope and results, see SIMPLE_CODE_VALIDATION.json. Short checks do not measure
-full-training accuracy.
+1A: MNIST FNN, SGD, 11 epochs, test evaluation, training loss/accuracy plots.
+1B: Fashion-MNIST FNN, SGD, test evaluation, training loss/accuracy plots.
+1C: CIFAR10 FNN, train/test split, Adam, evaluation and plots.
+1E: Sign Language FNN, label encoding, Adam, evaluation and plots.
+2A/2B/2C: preprocess CIFAR10/MNIST/Sign images, CNN architecture, train and evaluate.
+3A: scale normal transactions, train an autoencoder, compile with a metric, detect high reconstruction error.
+3C: fill missing values, chronological split, scale, normal windows, LSTM autoencoder, threshold.
+3D: scale healthy sensors, split engines, windows within each engine, LSTM autoencoder, threshold.
+3F: train without label 24, reconstruct test images, detect high reconstruction error.
+4A: labeled IMDB text, lowercase/stop-word cleanup, train-only CBOW, padding, mean embeddings, dense classifier, test loss/accuracy.
+4B/4C: tokenize tweets/document3, train CBOW, display similar words.
+4D: tokenize tweets, train CBOW, average vectors, user query, cosine similarity, top five.
+5A/5B/5C: local pretrained VGG16, preprocessing, frozen training, actual top-layer fine-tuning, test loss/accuracy, prediction plot.
 
-1A: MNIST FNN; train/test data; SGD for 11 epochs; evaluation; loss/accuracy plots.
-1B: Fashion-MNIST FNN; train/test data; SGD; evaluation; loss/accuracy plots.
-1C: CIFAR10 FNN; stratified train/test split; Adam; evaluation; loss/accuracy plots.
-1E: Sign Language FNN; label encoding; Adam; evaluation; loss/accuracy plots.
-
-2A: CIFAR10 CNN; load/normalize/reshape; architecture; training; test performance.
-2B: MNIST CNN; load/normalize/reshape; architecture; training; test performance.
-2C: Sign Language CNN; label encoding and preprocessing; training; test performance.
-
-3A: Scale credit-card features; train only on non-fraud; reconstruction threshold;
-    compile with optimizer/loss/MAE metric; fraud accuracy and reconstruction AUC.
-3C: Fill missing values; chronological splits; scale and create time windows;
-    normal-only LSTM autoencoder; reconstruction threshold and anomaly evaluation.
-3D: Scale NASA sensors; separate engines across splits; windows within each engine;
-    normal-only LSTM autoencoder; reconstruction threshold and fault evaluation.
-3F: Hold out Sign Language label 24 as the anomaly; train on the other 23 classes;
-    detect the selected class using reconstruction error and a normal-data threshold.
-
-4A: Local labeled IMDB reviews; HTML cleanup; lowercase/tokenize/remove stop words;
-    retain no/not/never; train-only vocabulary and Word2Vec CBOW (sg=0);
-    pad word IDs; frozen learned embeddings; masked document mean; dense classifier;
-    held-out test loss and accuracy. Padding is excluded from the document mean.
-4B: Clean/tokenize Twitter data; train Word2Vec CBOW; inspect similar-word examples.
-4C: Read/tokenize document3.txt; train Word2Vec CBOW; inspect similar-word examples.
-4D: Clean/tokenize tweets; train CBOW; average document/query embeddings;
-    rank recommendations by cosine similarity to the user's keywords.
-
-5A: Caltech101 classification; local pretrained VGG16; image preprocessing;
-    frozen base and custom head; head training; unfreeze the top two convolution
-    layers; recompile at low learning rate; fine-tune on raw images; final test
-    loss/accuracy; visualize an image with actual and predicted class.
-5B: The same transfer-learning, fine-tuning and prediction steps for Intel images.
-5C: The same transfer-learning, fine-tuning and prediction steps for Fashion-MNIST.
-    Each head trains for 40 epochs, followed by one raw-image fine-tuning epoch
-    with Adam at 0.00001. Train, validation and test image sets remain disjoint.
-    Caltech uses all 101 object classes, excludes BACKGROUND_Google, and uses
-    30 training-pool images per class (24 fit, 6 validation), plus up to 10 test
-    images. Fashion excludes the extra nested train folder.
-
-AGREED EXCEPTIONS AND STATEMENT INTERPRETATIONS
-3B and 3E: Existing ECG autoencoder replacements are retained as requested;
-          they do not implement the original MVTec AD or NSL-KDD statements.
-1B: The title specifies Fashion-MNIST, while substep (b) mentions CIFAR10.
-    The notebook follows the Fashion-MNIST title.
-5A-5C: The statements call the task object detection but name classification
-       datasets. These notebooks implement image classification. They do not
-       train a bounding-box detector; no bounding-box annotations are supplied.
-
-All notebook data and weights remain inside the corresponding exercise folder.
-No notebook defines def, lambda or custom classes. EXAM_CODE_ONLY.zip excludes
-datasets and weights. No dataset ZIP is created.
+3B/3E remain the agreed ECG exceptions.
+1B follows the Fashion-MNIST title despite the statement's CIFAR10 typo.
+Section 5 follows the image-classification interpretation, not bounding-box detection.
+Reconstruction thresholds use normal training errors for a short exam example.
+All data paths remain local. No custom functions/classes/lambdas.
